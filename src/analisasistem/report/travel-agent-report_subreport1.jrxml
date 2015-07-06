@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="travel-agent-report_subreport1" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="87d465c0-8f66-478c-a0c5-dfb6f5fd77a1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_agent" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+detail_registrasi.id_detail_registrasi,
+registrasi.id_registrasi AS id_registrasi,
+registrasi.pax_registrasi AS pax,
+tipe_kamar.nama_tipekamar AS tipekamar,
+registrasi.checkin_registrasi AS checkin,
+registrasi.checkout_registrasi AS checkout ,
+COUNT(detail_registrasi.id_kamar) as qty,
+SUM(detail_registrasi.subtotal_registrasi) as subtotal
+
+FROM detail_registrasi
+
+JOIN registrasi ON registrasi.id_registrasi=detail_registrasi.id_registrasi
+
+JOIN tipe_kamar On tipe_kamar.id_tipekamar=detail_registrasi.id_tipekamar
+
+WHERE detail_registrasi.id_registrasi
+
+IN(
+	SELECT registrasi.id_registrasi FROM registrasi WHERE registrasi.id_agent='$P!{id_agent}'
+)
+
+GROUP BY detail_registrasi.id_registrasi,detail_registrasi.id_tipekamar;]]>
+	</queryString>
+	<field name="id_detail_registrasi" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_registrasi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pax" class="java.lang.Integer"/>
+	<field name="tipekamar" class="java.lang.String"/>
+	<field name="checkin" class="java.sql.Date"/>
+	<field name="checkout" class="java.sql.Date"/>
+	<field name="qty" class="java.lang.Long"/>
+	<field name="subtotal" class="java.math.BigDecimal"/>
+	<variable name="grandtotal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{subtotal}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="2" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="8c21b287-a1a8-4317-a0df-a5bad3be6244" x="0" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Registrasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f4e4bda1-5f89-480f-888e-0d5571d9dd29" x="100" y="2" width="28" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33161c19-25e9-493c-a8b0-137e52f676c4" x="128" y="2" width="101" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipe Kamar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="64a1c288-a8d7-4038-b0a8-4f05d1a441a3" x="229" y="2" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check In]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="da1f2eb3-f99a-4adc-ae1b-c2a6882442b4" x="0" y="21" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="bcccaf82-053a-4590-baa3-f16033024bf8" x="340" y="1" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check out]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9710627b-5082-4c8c-a818-c52141f29bdc" x="478" y="1" width="74" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c02b19cb-0086-4292-8b60-87160e157586" x="440" y="2" width="38" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement uuid="fa0a8b8f-935e-4ec1-a9f3-e906fdc2c32b" x="0" y="20" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="ebfd08d6-9d21-437a-9b38-4c206107d924" x="100" y="2" width="28" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="793c8de7-4927-4cfa-b2ce-b6ec0151a3db" x="128" y="2" width="101" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipekamar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38c5a9a1-f71f-47a2-8029-2df2c2867f87" x="229" y="2" width="111" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{checkin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="872cdf62-4c87-47b1-9a09-d491f2afda91" x="340" y="2" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{checkout}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;#,##0.00-">
+				<reportElement uuid="5891330f-56b1-4ea1-b191-aed7c9d0b379" x="478" y="2" width="74" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c2eeadd1-29e7-4b85-bcb0-5876d72f984e" x="440" y="2" width="38" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<elementGroup>
+				<textField>
+					<reportElement uuid="a574e269-bad2-4c6f-961f-7ede751f0766" isPrintRepeatedValues="false" x="0" y="2" width="100" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_registrasi}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a957c56e-9840-4c32-a014-007a7f5639cc" x="377" y="0" width="101" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grand Total :]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="ab5b9b7b-cdcd-48b6-93b9-3b32f01b3530" x="478" y="0" width="74" height="24"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grandtotal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="eb8c0b9f-e9fd-4930-a822-c5a8162e7b91" x="0" y="23" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="eb8c0b9f-e9fd-4930-a822-c5a8162e7b91" x="0" y="1" width="555" height="1"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="travel-agent-report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7cbea6b-86c9-4fcf-9123-b5205b0f3a2e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_agent" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Kampus\\SEMESTER VI\\ADSI\\Perangkat Lunak\\AnalisaSistem\\src\\analisasistem\\report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM travel_agent  WHERE travel_agent.id_agent = '$P!{id_agent}';]]>
+	</queryString>
+	<field name="id_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="provinsi_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="negara_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telp_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fax_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="website_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="reg_agent" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fee_agent" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_agent" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_name_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_posisi_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="contact_phone_agent" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1879efb3-0f83-44ac-8544-a741003719fb" x="0" y="0" width="555" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT. BALI MYSTIQUE HOTEL AND APARTMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a41d75d8-91eb-4f3e-b3fc-bc4a1ad74156" x="0" y="33" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Jl. Petitenget No. 99X Kerobokan, Kuta , Badung - Bali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4ecbff3-98f4-4b88-b685-ca2855cf048b" x="0" y="52" width="555" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<text><![CDATA[Telp : (0361) 45655535 , Fax : (0361) 7687887, Email: mail@balimystique.com, Web: www.balimystique.com]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="124" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c130484a-72fa-4da7-ad25-3f826b275538" x="0" y="0" width="555" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRAVEL AGENT REPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83bb893b-40dc-4a71-a6a4-eac69286296f" x="0" y="21" width="555" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Dari 18 Agustus 2013 - 12 September 2013]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e0297020-9f8a-40a0-a40d-f3573f5b1cb9" x="109" y="64" width="446" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name_agent}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d18b3d73-7fdf-4890-a45e-96178fcd3129" x="102" y="45" width="7" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d18b3d73-7fdf-4890-a45e-96178fcd3129" x="102" y="64" width="7" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d18b3d73-7fdf-4890-a45e-96178fcd3129" x="102" y="84" width="7" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d18b3d73-7fdf-4890-a45e-96178fcd3129" x="102" y="103" width="7" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6a74a6a9-d5d0-47bb-855c-0fbb7684b3a0" x="109" y="103" width="446" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telp_agent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ecfd5f77-03de-4cf8-8a19-4752bc150e16" x="109" y="84" width="446" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{alamat_agent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32c29f1e-5115-4a5a-8536-e4224db79377" x="109" y="45" width="446" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_agent}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6913ae7d-65f9-45ff-9b77-44f23b4acad9" x="0" y="45" width="102" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[No. Agent]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40c51028-68eb-445b-b40a-0dad55555579" x="0" y="64" width="102" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c47fd2c4-737c-4b89-b07a-d05a2073dccc" x="0" y="41" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="de06a207-b468-4c78-b2b6-89be96c097f7" x="0" y="84" width="102" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="78f3aaa6-b225-489e-866c-318494d9b4de" x="0" y="104" width="102" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Phone]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement uuid="c47fd2c4-737c-4b89-b07a-d05a2073dccc" x="0" y="3" width="555" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="119" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="b07d49c9-47f5-432d-ab71-a6c89ccda375" x="0" y="0" width="555" height="100"/>
+				<subreportParameter name="id_agent">
+					<subreportParameterExpression><![CDATA[$F{id_agent}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "travel-agent-report_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

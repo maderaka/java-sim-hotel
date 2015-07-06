@@ -1,2 +1,3 @@
-# java-sim-hotel
-A simple Management Information System for Hotel using Java SE, Java Swing, MySQL and JasperReport
+# Java SIM Hotel
+
+Sistem ini merupakan sistem informasi manajemen hotel sederhana menggunakan Java SE, Java Swing, MySQL, JasperReport. Project ini dibuat dalam rangka tugas matakuliah Analisa Sistem Informasi.
